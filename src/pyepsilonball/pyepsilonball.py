@@ -1,0 +1,5 @@
+import rational_interval
+import rational_interval_seq
+
+RationalInterval = rational_interval.RationalInterval
+RationalIntervalSeq = rational_interval_seq.RationalIntervalSeq
