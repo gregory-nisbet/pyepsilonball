@@ -2,7 +2,7 @@ all: test
 
 .PHONY: check-virtualenv
 check-virtualenv:
-	@(test -n $$VIRTUAL_ENV || ( printf '%s\n' "must be inside virtualenv"; exit 10; ))
+	@env | grep '^VIRTUAL_ENV=' > /dev/null
 
 install-deps: check-virtualenv
 
@@ -11,5 +11,8 @@ test: check-virtualenv
 	  python ./src/pyepsilonball/pyepsilonball.py; \
 	done
 
-format:
-	black ./src/pyepsilonball/*.py
+format: check-virtualenv
+	@black ./src/pyepsilonball/*.py
+
+repl: check-virtualenv
+	@bash repl.sh
